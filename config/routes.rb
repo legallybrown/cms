@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-
-  devise_for :users, controllers: {
-      sessions: 'users/sessions'
-    }
+  authenticated :user do
+    root 'dashboard#index', as: :authenticated_root
   end
 
   # Example of regular route:
